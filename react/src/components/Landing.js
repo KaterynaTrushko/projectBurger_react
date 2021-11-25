@@ -15,16 +15,25 @@ class Landing extends React.Component {
     this.setState({ display: !display })
   };
 
+  getTitle = (restaurants) => {
+    const { title, url } = restaurants;
+    this.setState({ title, url, display: false });
+  };
 
+  goToRestauran = () => {
+    console.log("Go to rastaurant!")
+  }
 
   render() {
-    console.log(this);
+   
     return (
       <div className="restauran_select">
         <div className="restauran_select_top">
           <div
             onClick={this.displayList}
-            className="restauran_select_top-header font-effect-outline">Выбери ресторан</div>
+            className="restauran_select_top-header font-effect-outline">
+              {this.state.url?this.state.title:"Выбери ресторан"}
+              </div>
           <div className="arrow_picker">
             <div className="arrow_picker-top"></div>
             <div className="arrow_picker-down"></div>
@@ -35,13 +44,13 @@ class Landing extends React.Component {
           <div className="restauran_select_botton">
             <ul>
               {restaurants.map(restaurants => {
-                return <li key={restaurants.id}>{restaurants.title}</li>
+                return <li onClick={() => this.getTitle(restaurants)} key={restaurants.id}>{restaurants.title}</li>
               })}
             </ul>
           </div>
         ) : null}
 
-        <button>Перейти в ресторан</button>
+        <button onClick={this.goToRestauran}>Перейти в ресторан</button>
       </div>
 
     )
