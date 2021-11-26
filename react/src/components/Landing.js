@@ -25,21 +25,19 @@ class Landing extends React.Component {
   }
 
   render() {
-   
     return (
       <div className="restauran_select">
         <div className="restauran_select_top">
           <div
             onClick={this.displayList}
             className="restauran_select_top-header font-effect-outline">
-              {this.state.url?this.state.title:"Выбери ресторан"}
-              </div>
+            {this.state.url ? this.state.title : "Выбери ресторан"}
+          </div>
           <div className="arrow_picker">
             <div className="arrow_picker-top"></div>
             <div className="arrow_picker-down"></div>
           </div>
         </div>
-
         {this.state.display ? (
           <div className="restauran_select_botton">
             <ul>
@@ -49,13 +47,10 @@ class Landing extends React.Component {
             </ul>
           </div>
         ) : null}
-
-        <button onClick={this.goToRestauran}>Перейти в ресторан</button>
+        {this.state.title&&!this.state.display?<button onClick={this.goToRestauran}>Перейти в ресторан</button>: null}
       </div>
-
     )
   }
-
 }
 
 export default Landing;
