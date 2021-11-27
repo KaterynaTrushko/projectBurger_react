@@ -1,6 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import restaurants from "../sample-restaurants";
+import { Link } from "react-router-dom";
 
 
 class Landing extends React.Component {
@@ -20,26 +21,29 @@ class Landing extends React.Component {
     this.setState({ title, url, display: false });
   };
 
-  goToRestauran = () => {
-    console.log("Go to rastaurant!")
-  }
+  // goToRestauran = () => {
+  //   const { url } = this.state;
+  //   console.log(url);
+  //   <Link to={`/restaurant/${url}`}></Link>
+  //   // this.props.history.push(`/restaurant/${url}`);
+  // };
 
   render() {
     return (
-      <div className="restauran_select">
-        <div className="restauran_select_top">
+      <div className='restaurant_select'>
+      <div className='restaurant_select_top'>
           <div
             onClick={this.displayList}
-            className="restauran_select_top-header font-effect-outline">
+            className="restaurant_select_top-header font-effect-outline">
             {this.state.url ? this.state.title : "Выбери ресторан"}
           </div>
-          <div className="arrow_picker">
-            <div className="arrow_picker-top"></div>
-            <div className="arrow_picker-down"></div>
+          <div className='arrow_picker'>
+          <div className='arrow_picker-up'></div>
+          <div className='arrow_picker-down'></div>
           </div>
         </div>
         {this.state.display ? (
-          <div className="restauran_select_botton">
+          <div className="restaurant_select_bottom">
             <ul>
               {restaurants.map(restaurants => {
                 return <li onClick={() => this.getTitle(restaurants)} key={restaurants.id}>{restaurants.title}</li>
@@ -47,7 +51,7 @@ class Landing extends React.Component {
             </ul>
           </div>
         ) : null}
-        {this.state.title&&!this.state.display?<button onClick={this.goToRestauran}>Перейти в ресторан</button>: null}
+        {this.state.title&&!this.state.display?<button ><Link to={`/restaurant/${this.state}`}>Перейти в ресторан</Link ></button>: null}
       </div>
     )
   }
