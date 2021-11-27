@@ -1,6 +1,11 @@
 import React from "react";
 
 class Burger extends React.Component {
+  heandleClick = () => {
+    this.props.addToOrder(this.props.index);
+    console.log(">>>>>>", this.props.index);
+  }
+
   render() {
     const { image, name, desc, status, price } = this.props.details;
     const isAvalilable = status === "available";
@@ -13,7 +18,13 @@ class Burger extends React.Component {
           <span className="price">{price}$</span>
         </h3>
         <p>{desc}</p>
-        <button className="buttenOrder" disabled={!isAvalilable}>{isAvalilable ? "Order" : "out of stock"}</button>
+        <button
+          className="buttenOrder"
+          disabled={!isAvalilable}
+          onClick={this.heandleClick}
+        >
+          {isAvalilable ? "Order" : "out of stock"}
+        </button>
       </div>
     </li>
 
