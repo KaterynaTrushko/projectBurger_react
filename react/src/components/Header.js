@@ -6,7 +6,7 @@ const Header = props => (
     <div className='wrap'>
       <div className='header-content'>
         <div className='header-rating'>
-          <div className='header-rating_tag'>Рейтинг: </div>
+          <div className='header-rating_tag'>rating: </div>
           <div className='header-rating_icon'>★★★★★</div>
         </div>
 
@@ -14,8 +14,8 @@ const Header = props => (
         <h1 className='font-effect-fire-animation'>{props.title}</h1>
         <h3>
           <span>
-            Быстрая доставка горячих
-            <span className='sub-header'> #бургеров</span>
+          fast delivery of hot 
+            <span className='sub-header'> #burgers</span>
           </span>
         </h3>
       </div>

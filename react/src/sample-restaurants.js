@@ -1,18 +1,18 @@
 // Наши рестораны
 const restaurants = [
   {
-    title: 'Hot Burger Тверская',
+    title: 'Hot Burger Golden gate',
     url: 'hot-burger-tverskaya',
     id: 1
   },
 
   {
-    title: 'Hot Burger Маросейка',
+    title: 'Hot Burger Independence Square',
     url: 'hot-burger-maroseyka',
     id: 2
   },
   {
-    title: 'Hot Burger Петровка',
+    title: 'Hot Burger Obolon',
     url: 'hot-burger-petrovka',
     id: 3
   }

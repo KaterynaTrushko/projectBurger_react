@@ -1,4 +1,5 @@
 import React from "react";
+import AddBurgerForm from "./AddBugerForm";
 
 class MenuAdmin extends React.Component{
   render(){
@@ -6,6 +7,8 @@ class MenuAdmin extends React.Component{
 
       <div className="menu-admin">
         <h2>Menu control</h2>
+        <AddBurgerForm addBurger={this.props.addBurger} />
+      <button onClick={this.props.loadSampleBurgers}>Loud Burgers</button>
       </div>
     )
   }

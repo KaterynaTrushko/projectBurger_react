@@ -35,7 +35,7 @@ class Landing extends React.Component {
           <div
             onClick={this.displayList}
             className="restaurant_select_top-header font-effect-outline">
-            {this.state.url ? this.state.title : "Выбери ресторан"}
+            {this.state.url ? this.state.title : "select a restaurant"}
           </div>
           <div className='arrow_picker'>
           <div className='arrow_picker-up'></div>
@@ -51,7 +51,7 @@ class Landing extends React.Component {
             </ul>
           </div>
         ) : null}
-        {this.state.title&&!this.state.display?<button ><Link to={`/restaurant/${this.state}`}>Перейти в ресторан</Link ></button>: null}
+        {this.state.title&&!this.state.display?<button ><Link to={`/restaurant/${this.state}`}>go to restaurant</Link ></button>: null}
       </div>
     )
   }
