@@ -5,4 +5,4 @@ import "./css/style.css"
 
 
 
-render(<MyRouter/>, document.querySelector('#root'));
+render(<MyRouter />, document.querySelector('#root'));
