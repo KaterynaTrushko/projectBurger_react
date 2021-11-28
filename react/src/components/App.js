@@ -16,12 +16,11 @@ class App extends React.Component {
     console.log("addBurger ", burger);
     const burgers = {...this.state.burgers};
     burgers[`burges${Date.now()}`] = burger;
-    this.setState({burgers})
+    this.setState({burgers});
 
   };
 
   loadSampleBurgers = () => {
-    console.log(sampleBurgers);
     this.setState({burgers: sampleBurgers})
   };
 
@@ -48,7 +47,7 @@ class App extends React.Component {
               })}
             </ul>      
         </div>
-        <Order/>
+        <Order burgers={this.state.burgers} order={this.state.order}/>
         <MenuAdmin loadSampleBurgers={this.loadSampleBurgers} addBurger = {this.addBurger}/>
       </div>
     );
