@@ -7,6 +7,9 @@ class Order extends React.Component {
     const burger = this.props.burgers[key];
     const count = this.props.order[key];
 
+
+    if (!burger) return null;
+
     const isAvailable = burger && burger.status === "available";
     if(!isAvailable) {
       return <li className="unavailable">

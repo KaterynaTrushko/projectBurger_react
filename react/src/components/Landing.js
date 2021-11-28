@@ -1,66 +1,66 @@
-import React from "react";
-import { render } from "react-dom";
-import restaurants from "../sample-restaurants";
-import { Link } from "react-router-dom";
 
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import restaurants from '../sample-restaurants';
 
-class Landing extends React.Component {
-  
-  state = {
-    display: false,
-    title: '',
-    url: ''
+const Landing = props => {
+  const [display, toggleDisplay] = useState(false);
+  const [title, setTitle] = useState('');
+  const [url, setUrl] = useState('');
+
+  const displayList = () => {
+    toggleDisplay(!display);
   };
 
-  displayList = () => {
-    const { display } = this.state;
-    this.setState({ display: !display })
+  const getTitle = restaurant => {
+    const { title, url } = restaurant;
+    setTitle(title);
+    setUrl(url);
+    toggleDisplay(false);
   };
 
-  getTitle = (restaurants) => {
-    const { title, url } = restaurants;
-    this.setState({ title, url, display: false });
+  const gotToRestaurant = () => {
+    props.history.push(`/restaurant/${url}`);
   };
 
-  
-
-  // goToRestauran = () => {
-  //   const { url } = this.state;
-  //   console.log(url);
-  //   <Link to={`/restaurant/${url}`}></Link>
-  //   // this.props.history.push(`/restaurant/${url}`);
-  // };
-
-  render() {
-
-    const object = this.state;
-
-    return (
-      <div className='restaurant_select'>
+  return (
+    <div className='restaurant_select'>
       <div className='restaurant_select_top'>
-          <div
-            onClick={this.displayList}
-            className="restaurant_select_top-header font-effect-outline">
-            {this.state.url ? this.state.title : "select a restaurant"}
-          </div>
-          <div className='arrow_picker'>
+        <div
+          onClick={displayList}
+          className='restaurant_select_top-header font-effect-outline'
+        >
+          {title ? title : 'Выбери ресторан'}
+        </div>
+        <div className='arrow_picker'>
           <div className='arrow_picker-up'></div>
           <div className='arrow_picker-down'></div>
-          </div>
         </div>
-        {this.state.display ? (
-          <div className="restaurant_select_bottom">
-            <ul>
-              {restaurants.map(restaurants => {
-                return <li onClick={() => this.getTitle(restaurants)} key={restaurants.id}>{restaurants.title}</li>
-              })}
-            </ul>
-          </div>
-        ) : null}
-        {this.state.title&&!this.state.display?<button ><Link to={`/restaurant/${this.state}`}>go to restaurant</Link ></button>: null}
       </div>
-    )
-  }
-}
+
+      {display ? (
+        <div className='restaurant_select_bottom'>
+          <ul>
+            {restaurants.map(restaurant => {
+              return (
+                <li onClick={() => getTitle(restaurant)} key={restaurant.id}>
+                  {restaurant.title}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ) : null}
+
+      {title && !display ? (
+        <button onClick={gotToRestaurant}>Перейти в ресторан</button>
+      ) : null}
+    </div>
+  );
+};
+
+Landing.propTypes = {
+  history: PropTypes.object
+};
 
 export default Landing;

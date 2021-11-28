@@ -14,17 +14,25 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const params = this.props.match;
+    const { params } = this.props.match;
 
+    const localStorageRef = localStorage.getItem(params.restaurantId);
+    if (localStorageRef) {
+      this.setState({ order: JSON.parse(localStorageRef) });
+    }
     this.ref = base.syncState(`${params.restaurantId}/burgers`, {
       context: this,
       state: 'burgers'
     });
   }
 
-  getState = () => {
-    return this.state;
-    console.log(this.state)
+  componentDidUpdate(){
+    const { params } = this.props.match;
+    localStorage.setItem(params.restaurantId, JSON.stringify(this.state.order));
+  }
+
+  componentWillUnmount() {
+    base.removeBinding(this.ref);
   }
 
   addBurger = burger => {
