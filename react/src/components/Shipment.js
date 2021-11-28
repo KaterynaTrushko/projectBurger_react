@@ -19,7 +19,7 @@ render() {
           <div>Delivery: {total > 0 ? shippingNeon : null}</div>
           <div className='total_wrap-free'>
             {total < 30
-              ? `order on $${30 - total} for deliviring for $2`
+              ? `order more on $${30 - total} for deliviring for $2`
               : null}
           </div>
         </div>

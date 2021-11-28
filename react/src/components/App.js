@@ -4,6 +4,7 @@ import Order from "./Order";
 import MenuAdmin from "./MenuAdmin";
 import sampleBurgers from "../sample-burgers";
 import Burger from "./Burger";
+import base from "../base";
 
 class App extends React.Component {
 
@@ -12,43 +13,57 @@ class App extends React.Component {
     order: {}
   }
 
+  componentDidMount() {
+    const params = this.props.match;
+
+    this.ref = base.syncState(`${params.restaurantId}/burgers`, {
+      context: this,
+      state: 'burgers'
+    });
+  }
+
+  getState = () => {
+    return this.state;
+    console.log(this.state)
+  }
+
   addBurger = burger => {
     console.log("addBurger ", burger);
-    const burgers = {...this.state.burgers};
+    const burgers = { ...this.state.burgers };
     burgers[`burges${Date.now()}`] = burger;
-    this.setState({burgers});
+    this.setState({ burgers });
 
   };
 
   loadSampleBurgers = () => {
-    this.setState({burgers: sampleBurgers})
+    this.setState({ burgers: sampleBurgers })
   };
 
   addToOrder = (key) => {
-    const order = {...this.state.order};
+    const order = { ...this.state.order };
     order[key] = order[key] + 1 || 1;
-    this.setState({order})
+    this.setState({ order })
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <div className="burger-paradise">
         <div className="menu">
-          <Header title="Very hot Burger" amount={10} hot={true}/> 
-            <ul className="burgers">
-              {Object.keys(this.state.burgers).map(key => {
-                return <Burger 
+          <Header title="Very hot Burger" amount={10} hot={true} />
+          <ul className="burgers">
+            {Object.keys(this.state.burgers).map(key => {
+              return <Burger
                 key={key}
-                index = {key}
+                index={key}
                 addToOrder={this.addToOrder}
-                details = {this.state.burgers[key]
-                }              
-                />
-              })}
-            </ul>      
+                details={this.state.burgers[key]
+                }
+              />
+            })}
+          </ul>
         </div>
-        <Order burgers={this.state.burgers} order={this.state.order}/>
-        <MenuAdmin loadSampleBurgers={this.loadSampleBurgers} addBurger = {this.addBurger}/>
+        <Order burgers={this.state.burgers} order={this.state.order} />
+        <MenuAdmin loadSampleBurgers={this.loadSampleBurgers} addBurger={this.addBurger} />
       </div>
     );
   }

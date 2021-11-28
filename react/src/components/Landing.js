@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 
 class Landing extends React.Component {
+  
   state = {
     display: false,
     title: '',
@@ -21,6 +22,8 @@ class Landing extends React.Component {
     this.setState({ title, url, display: false });
   };
 
+  
+
   // goToRestauran = () => {
   //   const { url } = this.state;
   //   console.log(url);
@@ -29,6 +32,9 @@ class Landing extends React.Component {
   // };
 
   render() {
+
+    const object = this.state;
+
     return (
       <div className='restaurant_select'>
       <div className='restaurant_select_top'>
