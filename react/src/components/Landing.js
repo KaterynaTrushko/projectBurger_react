@@ -30,7 +30,7 @@ const Landing = props => {
           onClick={displayList}
           className='restaurant_select_top-header font-effect-outline'
         >
-          {title ? title : 'Выбери ресторан'}
+          {title ? title : 'select a restaurant'}
         </div>
         <div className='arrow_picker'>
           <div className='arrow_picker-up'></div>
@@ -53,7 +53,7 @@ const Landing = props => {
       ) : null}
 
       {title && !display ? (
-        <button onClick={gotToRestaurant}>Перейти в ресторан</button>
+        <button onClick={gotToRestaurant}>go to restaurant</button>
       ) : null}
     </div>
   );
