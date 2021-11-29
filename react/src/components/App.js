@@ -33,6 +33,7 @@ class App extends React.Component {
 
   componentWillUnmount() {
     base.removeBinding(this.ref);
+    localStorage.clear();
   }
 
   addBurger = burger => {
@@ -47,7 +48,12 @@ class App extends React.Component {
     const burgers = {...this.state.burgers}; //copy
     burgers[key] = updeteBurger;  // update
     this.setState({burgers}); //stage
+  }
 
+  deleteBurger = key => {
+    const burgers = {...this.state.burgers};
+    burgers[key] = null;
+    this.setState({ burgers });
   }
 
   loadSampleBurgers = () => {
@@ -83,6 +89,7 @@ class App extends React.Component {
         addBurger={this.addBurger} 
         burgers={this.state.burgers}
         updateBurger={this.updateBurger}
+        deleteBurger={this.deleteBurger}
         />
       </div>
     );

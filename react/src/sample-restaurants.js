@@ -2,18 +2,18 @@
 const restaurants = [
   {
     title: 'Hot Burger Golden gate',
-    url: 'hot-burger-tverskaya',
+    url: 'hot-burger-golden-gate',
     id: 1
   },
 
   {
     title: 'Hot Burger Independence Square',
-    url: 'hot-burger-maroseyka',
+    url: 'hot-burger-independence-square',
     id: 2
   },
   {
     title: 'Hot Burger Obolon',
-    url: 'hot-burger-petrovka',
+    url: 'hot-burger-obolon',
     id: 3
   }
 ];
