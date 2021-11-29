@@ -43,6 +43,13 @@ class App extends React.Component {
 
   };
 
+  updateBurger = (key, updeteBurger) => {
+    const burgers = {...this.state.burgers}; //copy
+    burgers[key] = updeteBurger;  // update
+    this.setState({burgers}); //stage
+
+  }
+
   loadSampleBurgers = () => {
     this.setState({ burgers: sampleBurgers })
   };
@@ -75,6 +82,7 @@ class App extends React.Component {
         loadSampleBurgers={this.loadSampleBurgers} 
         addBurger={this.addBurger} 
         burgers={this.state.burgers}
+        updateBurger={this.updateBurger}
         />
       </div>
     );
