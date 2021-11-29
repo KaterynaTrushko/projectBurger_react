@@ -64,7 +64,16 @@ class App extends React.Component {
     const order = { ...this.state.order };
     order[key] = order[key] + 1 || 1;
     this.setState({ order })
+  };
+
+  deleteOrderForm = key => {
+    const order = {...this.state.order};
+    delete order[key];
+    this.setState({order});
+
   }
+
+
 
   render() {
     return (
@@ -83,13 +92,17 @@ class App extends React.Component {
             })}
           </ul>
         </div>
-        <Order burgers={this.state.burgers} order={this.state.order} />
+        <Order 
+          burgers={this.state.burgers} 
+          order={this.state.order} 
+          deleteOrderForm={this.deleteOrderForm} />
         <MenuAdmin 
-        loadSampleBurgers={this.loadSampleBurgers} 
-        addBurger={this.addBurger} 
-        burgers={this.state.burgers}
-        updateBurger={this.updateBurger}
-        deleteBurger={this.deleteBurger}
+          loadSampleBurgers={this.loadSampleBurgers} 
+          addBurger={this.addBurger} 
+          burgers={this.state.burgers}
+          updateBurger={this.updateBurger}
+          deleteBurger={this.deleteBurger}
+ 
         />
       </div>
     );
