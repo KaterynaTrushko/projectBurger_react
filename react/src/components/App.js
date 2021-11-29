@@ -16,7 +16,7 @@ class App extends React.Component {
   componentDidMount() {
     const { params } = this.props.match;
 
-    const localStorageRef = localStorage.getItem(params.restaurantId);
+     const localStorageRef = localStorage.getItem(params.restaurantId);
     if (localStorageRef) {
       this.setState({ order: JSON.parse(localStorageRef) });
     }
@@ -71,7 +71,11 @@ class App extends React.Component {
           </ul>
         </div>
         <Order burgers={this.state.burgers} order={this.state.order} />
-        <MenuAdmin loadSampleBurgers={this.loadSampleBurgers} addBurger={this.addBurger} />
+        <MenuAdmin 
+        loadSampleBurgers={this.loadSampleBurgers} 
+        addBurger={this.addBurger} 
+        burgers={this.state.burgers}
+        />
       </div>
     );
   }

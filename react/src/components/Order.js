@@ -12,14 +12,14 @@ class Order extends React.Component {
 
     const isAvailable = burger && burger.status === "available";
     if(!isAvailable) {
-      return <li className="unavailable">
+      return <li className="unavailable" key={burger}>
         Sorry {burger? burger.name : "burger"} temporarily unavailable
       </li>
     }
 
 
     return (
-    <li >
+    <li kay={burger}>
       <span>
         <span>{count}</span>
         {count > 1 ?" items ":" item "}{burger.name}{" "} 
